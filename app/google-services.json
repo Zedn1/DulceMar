@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "333711627629",
+    "project_id": "testeodulcemar",
+    "storage_bucket": "testeodulcemar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333711627629:android:4d1ad2ab72174f67a37664",
+        "android_client_info": {
+          "package_name": "cl.rojas.dulcemar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACx2aDjvX4pamngmEhHJvIKGXG_oyGI1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

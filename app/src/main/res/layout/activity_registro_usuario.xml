@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegistroUsuario"
+    android:background="@drawable/grayblur">
+
+    <!--Linear 1-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5.5"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dulcemar"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_centerInParent="true">
+
+            </TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--Linear 2-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4.5">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:src="@drawable/emptypfp"
+                android:layout_centerInParent="true">
+
+            </ImageView>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!--Linear 3-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="4">
+
+        <!--Linear 3.1-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingrese sus datos para registrarse"
+                    android:textSize="22sp"
+                    android:textColor="@color/black"
+                    android:layout_centerInParent="true">
+
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--Linear 3.2-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/registroNombre"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:hint="Nombre"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_centerInParent="true"
+                    android:inputType="text">
+
+                </EditText>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--Linear 3.3-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/registroCorreo"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:hint="Correo"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_centerInParent="true"
+                    android:inputType="textEmailAddress">
+
+                </EditText>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--Linear 3.4-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/registroClave"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:hint="Clave"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_centerInParent="true"
+                    android:inputType="textPassword">
+
+                </EditText>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!--Linear 4-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5.5"
+        android:background="@color/white">
+
+        <!--Linear 4.1-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/botonVolverRegistro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Volver"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:layout_centerInParent="true"
+                    android:backgroundTint="@color/gris_claro">
+
+                </Button>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--Linear 4.2-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/botonRegistro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrarse"
+                    android:textColor="@color/black"
+                    android:textSize="28sp"
+                    android:layout_centerInParent="true"
+                    android:backgroundTint="@color/gris_oscuro">
+
+                </Button>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
