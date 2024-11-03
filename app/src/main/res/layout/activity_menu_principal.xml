@@ -100,6 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <Button
+                    android:id="@+id/Domicilio"
                     android:layout_width="170dp"
                     android:layout_height="170dp"
                     android:text="Domicilio"
@@ -123,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <Button
+                    android:id="@+id/RetiroL"
                     android:layout_width="170dp"
                     android:layout_height="170dp"
                     android:text="Retiro en local"
