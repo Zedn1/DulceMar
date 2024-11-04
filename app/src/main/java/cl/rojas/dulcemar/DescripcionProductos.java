@@ -1,5 +1,6 @@
 package cl.rojas.dulcemar;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +42,7 @@ public class DescripcionProductos extends AppCompatActivity {
         // Get a reference to the Firestore document
         DocumentReference bdref = bd.collection("producto").document("K4IR8XEzg9s3xCJsjy44");
         // Retrieve the document
+        Button Regret = (Button)findViewById(R.id.RMenu);
         bdref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
