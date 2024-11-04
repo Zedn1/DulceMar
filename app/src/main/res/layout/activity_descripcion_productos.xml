@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gris_claro"
-    tools:context=".descripcion_productos">
+    tools:context=".DescripcionProductos">
 
     <!--Linear 1-->
     <LinearLayout
