@@ -45,7 +45,7 @@
             <ImageView
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:src="@drawable/emptypfp"
+                android:src="@drawable/account_image"
                 android:layout_centerInParent="true">
 
             </ImageView>

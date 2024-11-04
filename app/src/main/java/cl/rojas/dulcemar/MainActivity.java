@@ -21,10 +21,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    FirebaseFirestore mFireStore = FirebaseFirestore.getInstance();
 
 
     @Override
@@ -67,9 +70,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    finish();
-                    startActivity(new Intent(MainActivity.this, MenuPrincipal.class));
-                    Toast.makeText(MainActivity.this, "Bienvenido a DulceMar", Toast.LENGTH_SHORT).show();
+                    String userId = mAuth.getCurrentUser().getUid();
+
+                    mFireStore.collection("users").document(userId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful() && task.getResult() != null) {
+                                DocumentSnapshot documento = task.getResult();
+                                String userType = documento.getString("userType");
+
+                                if ("Cliente".equals(userType)){
+                                    startActivity(new Intent(MainActivity.this, MenuPrincipal.class));
+                                } else if ("Encargado".equals(userType)) {
+                                    startActivity(new Intent(MainActivity.this, MenuPrincipalEncargado.class));
+                                } else if ("Repartidor".equals(userType)) {
+                                    startActivity(new Intent(MainActivity.this, MenuPrincipalRepartidor.class));
+                                }
+                                Toast.makeText(MainActivity.this, "Bienvenido a DulceMar", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }else {
+                                Toast.makeText(MainActivity.this, "Error recibiento el tipo de usuario", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }else {
                     Toast.makeText(MainActivity.this, "Error, credenciales incorrectas", Toast.LENGTH_SHORT).show();
                 }   

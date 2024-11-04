@@ -28,7 +28,7 @@
                 <ImageButton
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/menubarras"
+                    android:src="@drawable/menu_opciones"
                     android:contentDescription="menú de opciones"
                     android:scaleType="fitXY">
 

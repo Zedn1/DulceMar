@@ -28,7 +28,7 @@
                 <ImageButton
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/menubarras"
+                    android:src="@drawable/menu_opciones"
                     android:contentDescription="menú de opciones"
                     android:scaleType="fitXY">
 
@@ -55,7 +55,7 @@
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/billeterapng"
+                        android:src="@drawable/billetera"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true">
                     </ImageView>

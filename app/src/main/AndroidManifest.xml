@@ -17,6 +17,12 @@
         android:theme="@style/Theme.DulceMar"
         tools:targetApi="31">
         <activity
+            android:name=".MenuPrincipalRepartidor"
+            android:exported="false" />
+        <activity
+            android:name=".MenuPrincipalEncargado"
+            android:exported="false" />
+        <activity
             android:name=".MetodoPago"
             android:exported="false" />
         <activity

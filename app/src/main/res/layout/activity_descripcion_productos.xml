@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gris_claro"
-    tools:context=".Descripcion_Producto">
+    tools:context=".desscripcion_productos">
 
     <!--Linear 1-->
     <LinearLayout
@@ -25,7 +25,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/menubarras"
+                android:src="@drawable/menu_opciones"
                 android:contentDescription="menu de opciones">
 
             </ImageButton>

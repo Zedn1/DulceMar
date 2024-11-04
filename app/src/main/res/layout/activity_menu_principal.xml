@@ -8,13 +8,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MenuPrincipal"
-    android:background="@color/gris_claro2">
+    android:background="@color/gris_claro2"
+    android:fitsSystemWindows="true">
 
     <!--Linear 1-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3.5">
+        android:layout_weight="3.6"
+        android:background="@color/gris_claro">
 
         <!--Linear 1.1-->
         <LinearLayout
@@ -27,10 +29,10 @@
                 android:layout_height="match_parent">
                 <ImageButton
                     android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:src="@drawable/menubarras"
-                    android:scaleType="fitXY"
-                    android:background="@color/gris_claro2">
+                    android:layout_height="match_parent"
+                    android:src="@drawable/menu_opciones"
+
+                    android:background="@color/gris_claro">
 
                 </ImageButton>
             </RelativeLayout>
@@ -47,12 +49,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageButton
-                    android:layout_width="85dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/emptypfp"
+                    android:id="@+id/BotonCuenta"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/account_image"
                     android:layout_alignParentRight="true"
-                    android:scaleType="fitXY"
-                    android:background="@color/gris_claro2">
+                    android:background="@color/gris_claro">
 
                 </ImageButton>
 
@@ -65,7 +67,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2.3">
+        android:layout_weight="2.2">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -144,7 +146,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3.5">
+        android:layout_weight="3.6">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
