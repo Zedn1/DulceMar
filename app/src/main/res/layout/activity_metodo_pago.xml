@@ -31,10 +31,8 @@
                     android:src="@drawable/menu_opciones"
                     android:contentDescription="menú de opciones"
                     android:scaleType="fitXY">
-
                 </ImageButton>
             </RelativeLayout>
-
         </LinearLayout>
 
         <!--Linear 1.2-->
@@ -81,10 +79,7 @@
                     </TextView>
                 </RelativeLayout>
             </LinearLayout>
-
-
         </LinearLayout>
-
     </LinearLayout>
 
     <!--Linear 2-->
@@ -94,17 +89,14 @@
         android:orientation="vertical"
         android:layout_weight="2"
         android:background="@drawable/grayblur">
-
         <!--Linear 3.1-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,7 +104,6 @@
                     android:textSize="22sp"
                     android:textColor="@color/black"
                     android:layout_centerInParent="true">
-
                 </TextView>
             </RelativeLayout>
         </LinearLayout>
@@ -122,22 +113,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <EditText
+                    android:id="@+id/NombrePago"
                     android:layout_width="350dp"
                     android:layout_height="50dp"
                     android:inputType="text"
                     android:hint="Nombre"
                     android:textColorHint="@color/black"
                     android:layout_centerInParent="true">
-
                 </EditText>
             </RelativeLayout>
-
         </LinearLayout>
 
         <!--Linear 3.3-->
@@ -145,22 +133,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <EditText
+                    android:id="@+id/CorreoPago"
                     android:layout_width="350dp"
                     android:layout_height="50dp"
                     android:inputType="textEmailAddress"
                     android:hint="Correo"
                     android:textColorHint="@color/black"
                     android:layout_centerInParent="true">
-
                 </EditText>
             </RelativeLayout>
-
         </LinearLayout>
 
         <!--Linear 3.4-->
@@ -168,22 +153,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <EditText
+                    android:id="@+id/RUT"
                     android:layout_width="350dp"
                     android:layout_height="50dp"
                     android:inputType="textPassword"
                     android:hint="RUT"
                     android:textColorHint="@color/black"
                     android:layout_centerInParent="true">
-
                 </EditText>
             </RelativeLayout>
-
         </LinearLayout>
 
         <!--Linear 3.5-->
@@ -191,25 +173,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <EditText
+                    android:id="@+id/NTarjeta"
                     android:layout_width="350dp"
                     android:layout_height="50dp"
                     android:inputType="textPassword"
                     android:hint="N° de tarjeta"
                     android:textColorHint="@color/black"
                     android:layout_centerInParent="true">
-
                 </EditText>
             </RelativeLayout>
-
         </LinearLayout>
-
-
     </LinearLayout>
 
     <!--Linear 3-->
@@ -218,46 +195,18 @@
         android:layout_height="match_parent"
         android:layout_weight="4.5"
         android:background="@color/gris_claro2">
-
-        <!--Linear 3.1-->
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Volver"
-                    android:textSize="35sp"
-                    android:layout_centerInParent="true"
-                    android:backgroundTint="@color/gris_oscuro">
-                </Button>
-            </RelativeLayout>
-        </LinearLayout>
-
-        <!--Linear 3.2-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="2">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Finalizar"
-                    android:textSize="35sp"
-                    android:layout_centerInParent="true"
-                    android:backgroundTint="@color/gris_oscuro">
-                </Button>
-            </RelativeLayout>
-        </LinearLayout>
-
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/ConfirmarPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirmar pago"
+                android:textSize="35sp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@color/gris_oscuro">
+            </Button>
+        </RelativeLayout>
     </LinearLayout>
-
-
 </LinearLayout>

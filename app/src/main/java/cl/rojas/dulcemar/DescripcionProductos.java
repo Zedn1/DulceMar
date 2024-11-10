@@ -1,10 +1,12 @@
 package cl.rojas.dulcemar;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,38 +27,32 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DescripcionProductos extends AppCompatActivity {
 
-
-    FirebaseFirestore bd;
-
-    TextView descripcion;
+    private TextView nombreTextView;
+    private TextView precioTextView;
+    private TextView descripcionTextView;
+    private ImageView imagenImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion_productos);
-        // Initialize Firestore
-        bd = FirebaseFirestore.getInstance();
-        // Find the TextView by its ID
-        descripcion = findViewById(R.id.read); // Ensure this ID matches your XML layout
-        // Get a reference to the Firestore document
-        DocumentReference bdref = bd.collection("producto").document("K4IR8XEzg9s3xCJsjy44");
-        // Retrieve the document
-        bdref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        // Extract the text you want from the document
-                        String text = document.getString("descripcion"); // Replace with your field name
-                        descripcion.setText(text); // Set the text to the TextView
-                    } else {
-                        Toast.makeText(DescripcionProductos.this, "", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(DescripcionProductos.this, "Failed to retrieve data", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+
+        //nombreTextView = findViewById(R.id.);
+        //precioTextView = findViewById(R.id.);
+        //descripcionTextView = findViewById(R.id);
+        //imagenImageView = findViewById(R.id);
+
+        Intent intent = getIntent();
+        String nombre = intent.getStringExtra("NombreDelProducto");
+        double precio = intent.getDoubleExtra("PrecioDelProducto", 0.0);
+        String descripcion = intent.getStringExtra("DescripcionDelProducto");
+        String imagen = intent.getStringExtra("ImagenDelProducto");
+
+        nombreTextView.setText(nombre);
+        precioTextView.setText(String.valueOf(precio));
+        descripcionTextView.setText(descripcion);
+
+        int imagenId = getResources().getIdentifier(imagen, "drawable", getPackageName());
+        imagenImageView.setImageResource(imagenId);
     }
 }
