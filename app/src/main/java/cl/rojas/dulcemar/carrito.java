@@ -1,6 +1,7 @@
 package cl.rojas.dulcemar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ public class carrito extends AppCompatActivity {
     private CarritoClase carritoClase;
     private ListView listViewCarrito;
     private CarritoAdapter adapter;
+    private Button pagarButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,23 @@ public class carrito extends AppCompatActivity {
         setContentView(R.layout.activity_carrito);
 
         carritoClase = CarritoClase.getInstancia();
+        pagarButton = findViewById(R.id.btnPagar);
+
+        pagarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                irAMetodoPago();
+            }
+        });
 
 
         listViewCarrito = findViewById(R.id.listViewCarrito);
         mostrarProductosEnCarrito();
     }
+
+
+
+
     private void actualizarTotal() {
         TextView tvTotal = findViewById(R.id.tvTotal);
         tvTotal.setText("Precio Total: $" + String.format("%.2f", carritoClase.calcularTotal()));
@@ -39,6 +53,11 @@ public class carrito extends AppCompatActivity {
         adapter = new CarritoAdapter(this, carritoClase.getProductos());
         listViewCarrito.setAdapter(adapter);
         actualizarTotal(); // Llama a actualizarTotal aquí
+    }
+
+    private void irAMetodoPago() {
+        Intent intent = new Intent(carrito.this, MetodoPago.class);
+        startActivity(intent);
     }
 
 

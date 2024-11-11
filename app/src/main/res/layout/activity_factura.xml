@@ -7,14 +7,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MetodoPago">
+    tools:context=".factura">
 
     <!--Linear 1-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="4"
+        android:layout_weight="3.9"
         android:background="@color/gris_claro">
 
         <!--Linear 1.1-->
@@ -22,56 +22,46 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageButton
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/menu_opciones"
-                    android:contentDescription="menú de opciones"
-                    android:scaleType="fitXY">
-                </ImageButton>
-            </RelativeLayout>
-        </LinearLayout>
-
-            <!--Linear 1.2-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="4">
-
-            <!--Linear 1.2.1-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="6">
+                android:layout_weight="4">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/menu_opciones"
+                        android:contentDescription="menú de opciones"
+                        android:scaleType="fitXY">
+                    </ImageButton>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5">
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:src="@drawable/billetera"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/icono_factura"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true">
                     </ImageView>
                 </RelativeLayout>
-            </LinearLayout>
-
-            <!--Linear 1.2.1-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Método de pago"
+                        android:text="Factura"
                         android:textSize="30sp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
@@ -80,6 +70,9 @@
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <!--Linear 1.2-->
+
     </LinearLayout>
 
     <!--Linear 2-->
@@ -87,21 +80,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:background="@drawable/grayblur">
         <!--Linear 3.1-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="5">
+            android:layout_weight="8">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ingrese sus datos para el de pago"
-                    android:textSize="22sp"
+                    android:text="Datos de la factura"
+                    android:textSize="30sp"
                     android:textColor="@color/black"
                     android:layout_centerInParent="true">
                 </TextView>
@@ -121,72 +114,66 @@
                     android:orientation="vertical"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp">
-                    <EditText
-                        android:id="@+id/NombrePago"
+
+                    <TextView
+                        android:id="@+id/FacturaID"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:inputType="text"
-                        android:hint="Nombre"
+                        android:textSize="25sp"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/black"
                         android:layout_marginBottom="15dp"
                         android:layout_marginTop="15dp">
-                    </EditText>
+                    </TextView>
 
-                    <EditText
-                        android:id="@+id/CorreoPago"
+                    <TextView
+                        android:id="@+id/FacturaNombre"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:inputType="textEmailAddress"
-                        android:hint="Correo"
+                        android:textSize="25sp"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:layout_marginBottom="15dp">
-                    </EditText>
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp">
+                    </TextView>
 
-                    <EditText
-                        android:id="@+id/PagoRUT"
+                    <TextView
+                        android:id="@+id/FacturaPrecioSinIVA"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:inputType="textPassword"
-                        android:hint="RUT"
+                        android:textSize="25sp"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:layout_marginBottom="15dp">
-                    </EditText>
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp">
+                    </TextView>
 
-                    <EditText
-                        android:id="@+id/PagoNTarjeta"
+                    <TextView
+                        android:id="@+id/FacturaIVA"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:inputType="text"
-                        android:hint="N° de tarjeta"
+                        android:textSize="25sp"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:layout_marginBottom="15dp">
-                    </EditText>
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp">
+                    </TextView>
 
-                    <EditText
-                        android:id="@+id/CallePago"
+                    <TextView
+                        android:id="@+id/FacturaPrecioTotal"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:inputType="text"
-                        android:hint="Calle"
+                        android:textSize="25sp"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:layout_marginBottom="15dp">
-                    </EditText>
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp">
+                    </TextView>
 
-                    <EditText
-                        android:id="@+id/NCasaPago"
+                    <TextView
+                        android:id="@+id/FacturaDireccion"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:inputType="text"
-                        android:hint="N° de casa"
+                        android:textSize="25sp"
                         android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:layout_marginBottom="15dp">
-                    </EditText>
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="15dp">
+                    </TextView>
 
                 </LinearLayout>
             </ScrollView>
@@ -199,7 +186,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4.5"
+        android:layout_weight="3.9"
         android:background="@color/gris_claro2">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -208,7 +195,7 @@
                 android:id="@+id/ConfirmarPago"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Confirmar pago"
+                android:text="Pedidos"
                 android:textSize="35sp"
                 android:layout_centerInParent="true"
                 android:backgroundTint="@color/gris_oscuro"

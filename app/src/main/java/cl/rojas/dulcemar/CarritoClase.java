@@ -1,7 +1,5 @@
 package cl.rojas.dulcemar;
 
-import android.content.Intent;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

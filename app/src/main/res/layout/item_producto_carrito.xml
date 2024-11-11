@@ -24,17 +24,23 @@
         android:id="@+id/btnAumentar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+" />
+        android:text="+"
+        android:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/btnDisminuir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-" />
+        android:text="-"
+        android:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/btnEliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eliminar" />
+        android:text="Eliminar"
+        android:backgroundTint="@color/gris_oscuro"
+        android:textColor="@color/white"/>
 </LinearLayout>

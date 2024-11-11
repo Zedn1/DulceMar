@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.security.MessageDigest;
@@ -69,7 +71,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
 
 
-    // public String DesencriptarContraseña(){}
+
 
 
 
@@ -111,33 +113,54 @@ public class RegistroUsuario extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String nombreCapturadoRegistro, String correoCapturadoRegistro, String claveCapturadaRegistro){
+    private void registerUser (String nombreCapturadoRegistro, String correoCapturadoRegistro, String claveCapturadaRegistro) {
         try {
             mAuth.createUserWithEmailAndPassword(correoCapturadoRegistro, claveCapturadaRegistro).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    String id = mAuth.getCurrentUser().getUid();
-                    String userType = "Cliente";
-                    String claveEncriptada = EncriptarContraseña(claveCapturadaRegistro);
-                    Map<String, Object> map = new  HashMap<>();
-                    map.put("id", id);
-                    map.put("name", nombreCapturadoRegistro);
-                    map.put("email", correoCapturadoRegistro);
-                    map.put("password", claveEncriptada);
-                    map.put("userType", userType);
-                    mFireStore.collection("users").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            finish();
-                            startActivity(new Intent(RegistroUsuario.this, MainActivity.class));
-                            Toast.makeText(RegistroUsuario.this, "Usuario Registrado exitosamente", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(RegistroUsuario.this, "Error al guardar usuario", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    if (task.isSuccessful()) {
+                        String id = mAuth.getCurrentUser ().getUid();
+                        String userType = "Cliente";
+                        String claveEncriptada = EncriptarContraseña(claveCapturadaRegistro);
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("id", id);
+                        map.put("name", nombreCapturadoRegistro);
+                        map.put("email", correoCapturadoRegistro);
+                        map.put("password", claveEncriptada);
+                        map.put("userType", userType);
+
+                        // Actualizar el perfil del usuario
+                        FirebaseUser user = mAuth.getCurrentUser ();
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(nombreCapturadoRegistro) // Establece el nombre de visualización
+                                .build();
+
+                        user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    // Ahora el nombre de visualización está actualizado
+                                    mFireStore.collection("users").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            finish();
+                                            startActivity(new Intent(RegistroUsuario.this, MainActivity.class));
+                                            Toast.makeText(RegistroUsuario.this, "Usuario Registrado exitosamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(RegistroUsuario.this, "Error al guardar usuario", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                } else {
+                                    Toast.makeText(RegistroUsuario.this, "Error al actualizar el perfil", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    } else {
+                        Toast.makeText(RegistroUsuario.this, "Error al registrar", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -145,7 +168,7 @@ public class RegistroUsuario extends AppCompatActivity {
                     Toast.makeText(RegistroUsuario.this, "Error al registrar", Toast.LENGTH_SHORT).show();
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(RegistroUsuario.this, "Error al encriptar la contraseña", Toast.LENGTH_SHORT).show();
         }

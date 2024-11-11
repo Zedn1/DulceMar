@@ -17,6 +17,9 @@
         android:theme="@style/Theme.DulceMar"
         tools:targetApi="31">
         <activity
+            android:name=".factura"
+            android:exported="false" />
+        <activity
             android:name=".MenuPrincipalRepartidor"
             android:exported="false" />
         <activity

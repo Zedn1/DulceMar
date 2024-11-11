@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 String correoCapturado = correoIngresado.getText().toString();
                 String claveCapturada = claveIngresada.getText().toString();
 
-                if (correoCapturado.isEmpty() && claveCapturada.isEmpty()){
+                if (correoCapturado.isEmpty() || claveCapturada.isEmpty()){
                     Toast.makeText(MainActivity.this, "Ingrese sus datos", Toast.LENGTH_SHORT).show();
                 }else {
                     loginUser(correoCapturado, claveCapturada);
