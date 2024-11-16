@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MenuPrincipalRepartidor">
@@ -11,20 +12,78 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:orientation="vertical"
+        android:layout_weight="4"
+        android:background="@color/gris_claro">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="4">
+
+            <!--Linear 1.2.1-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="6">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/auto"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true">
+                    </ImageView>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--Linear 1.2.1-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="menu de repartidor"
+                        android:textSize="30sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_centerInParent="true">
+                    </TextView>
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.7"
+        android:background="@drawable/grayblur">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Menu Repartidor"
-                android:textSize="35dp"
-                android:textColor="@color/black"
-                android:layout_centerInParent="true">
+            <ListView
+                android:id="@+id/listViewCarrito"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/black"
+                android:dividerHeight="1dp"
+                android:cacheColorHint="@color/white">
 
-            </TextView>
+            </ListView>
         </RelativeLayout>
     </LinearLayout>
+
 
 </LinearLayout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!--Linear Textos-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!--NOMBRE-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Nombre cliente "
+                        android:textSize="30dp"
+                        android:textStyle="bold">
+                    </TextView>
+                </LinearLayout>
+
+                <!--DIRECCIÓN-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/encargo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="encargo (cosas del pedido supongo)"
+                        android:textSize="30dp"
+                        android:textStyle="bold">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/direccion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="direccion"
+                        android:textSize="30dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--Linear Botones-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <!--botón llamar-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageButton
+                            android:id="@+id/llamar"
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/apruebo"
+                            android:layout_centerInParent="true">
+                        </ImageButton>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <!--botón ir-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageButton
+                            android:id="@+id/ir"
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/rechazo"
+                            android:layout_centerInParent="true">
+                        </ImageButton>
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
