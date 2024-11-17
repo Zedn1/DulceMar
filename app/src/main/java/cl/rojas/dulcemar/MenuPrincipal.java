@@ -28,13 +28,22 @@ public class MenuPrincipal extends AppCompatActivity {
         Button PedidoCasa = (Button) findViewById(R.id.Domicilio);
         Button RetiroLocal = (Button) findViewById(R.id.RetiroL);
         ImageButton botonCuenta = findViewById(R.id.BotonCuenta);
+        ImageButton botonOpciones = findViewById(R.id.BotonOpciones);
 
         mAuth = FirebaseAuth.getInstance();
+
 
         botonCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mostrarMenuCuenta(view);
+            }
+        });
+
+        botonOpciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mostrarMenuOpciones(view);
             }
         });
 
@@ -51,6 +60,8 @@ public class MenuPrincipal extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void mostrarMenuCuenta(View view){
         PopupMenu popupMenu = new PopupMenu(this, view);
@@ -71,9 +82,35 @@ public class MenuPrincipal extends AppCompatActivity {
         popupMenu.show();
     }
 
+    private void mostrarMenuOpciones(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.menu_opciones, popupMenu.getMenu());
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.opcionFacturas) {
+                    // Lógica para la opción de Facturas
+                    return true;
+                } else if (menuItem.getItemId() == R.id.opcionPedidos) {
+                    irAPedidos();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+        popupMenu.show();
+    }
+
     private void cerrarSesion(){
         mAuth.signOut();
         finish();
         startActivity(new Intent(MenuPrincipal.this, MainActivity.class));
+    }
+
+    private void irAPedidos() {
+        startActivity(new Intent(MenuPrincipal.this, pedidosCliente.class));
     }
 }

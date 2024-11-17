@@ -1,6 +1,9 @@
 package cl.rojas.dulcemar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ public class factura extends AppCompatActivity {
         setContentView(R.layout.activity_factura);
 
         db = FirebaseFirestore.getInstance();
+        Button btnPedidos = (Button) findViewById(R.id.pedidos);
 
         // Inicializar TextViews
         facturaID = findViewById(R.id.FacturaID);
@@ -43,6 +47,13 @@ public class factura extends AppCompatActivity {
 
         // Generar ID única para la factura
         String idFactura = UUID.randomUUID().toString();
+
+        btnPedidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(factura.this, pedidosCliente.class));
+            }
+        });
 
         // Mostrar datos en la UI
         facturaID.setText(idFactura);

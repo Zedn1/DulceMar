@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".factura">
+    tools:context=".pedidosCliente">
 
     <!--Linear 1-->
     <LinearLayout
@@ -49,7 +49,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/icono_factura"
+                        android:src="@drawable/icono_envios"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true">
                     </ImageView>
@@ -61,7 +61,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Factura"
+                        android:text="Envios"
                         android:textSize="30sp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
@@ -93,7 +93,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Datos de la factura"
+                    android:text="Lista de envios"
                     android:textSize="30sp"
                     android:textColor="@color/black"
                     android:layout_centerInParent="true">
@@ -105,83 +105,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
-            <ScrollView
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+                <ListView
+                    android:id="@+id/listaPedidosCliente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
+                    android:divider="@color/black"
+                    android:dividerHeight="1dp">
 
-                    <TextView
-                        android:id="@+id/FacturaID"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/black"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/FacturaNombre"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/black"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/FacturaPrecioSinIVA"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/black"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/FacturaIVA"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/black"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/FacturaPrecioTotal"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/black"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/FacturaDireccion"
-                        android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:textSize="25sp"
-                        android:textColor="@color/black"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="15dp">
-                    </TextView>
-
-                </LinearLayout>
-            </ScrollView>
-
+                </ListView>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
-
     <!--Linear 3-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -192,10 +134,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <Button
-                android:id="@+id/pedidos"
+                android:id="@+id/btnIrAInicioPedidosAct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pedidos"
+                android:text="Inicio"
                 android:textSize="35sp"
                 android:layout_centerInParent="true"
                 android:backgroundTint="@color/gris_oscuro"
