@@ -39,6 +39,13 @@
         android:text="VerPedido"
         android:textSize="15sp"
         android:textColor="@color/black">
-
+    </Button>
+    <Button
+        android:id="@+id/botonMapaCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver Mapa"
+        android:textSize="15sp"
+        android:textColor="@color/black">
     </Button>
 </LinearLayout>

@@ -13,76 +13,111 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="4"
+        android:layout_weight="7"
         android:background="@color/gris_claro">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="4">
-
-            <!--Linear 1.2.1-->
+            android:layout_weight="5">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="6">
+                android:layout_weight="4">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+                    <ImageButton
+                        android:id="@+id/menuOpcionesRepartidor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/menu_opciones"
+                        android:contentDescription="menú de opciones"
+                        android:scaleType="fitXY">
+                    </ImageButton>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5">
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:src="@drawable/auto"
                         android:layout_alignParentRight="true"
                         android:layout_centerInParent="true">
                     </ImageView>
                 </RelativeLayout>
-            </LinearLayout>
-
-            <!--Linear 1.2.1-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="menu de repartidor"
-                        android:textSize="30sp"
+                        android:text="Pedidos a enviar"
+                        android:textSize="28sp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_centerInParent="true">
                     </TextView>
                 </RelativeLayout>
             </LinearLayout>
-
-
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.7"
+        android:orientation="vertical"
+        android:layout_weight="1"
         android:background="@drawable/grayblur">
-        <RelativeLayout
+        <!--Linear 3.1-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ListView
-                android:id="@+id/listViewCarrito"
+            android:layout_height="match_parent"
+            android:layout_weight="8">
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@color/black"
-                android:dividerHeight="1dp"
-                android:cacheColorHint="@color/white">
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pedidos de clientes listos"
+                    android:textSize="28sp"
+                    android:textColor="@color/black"
+                    android:layout_centerInParent="true">
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
 
-            </ListView>
-        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+                <ListView
+                    android:id="@+id/listaPedidosRepartidor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@color/black"
+                    android:dividerHeight="1dp">
+
+                </ListView>
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
 

@@ -3,50 +3,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <!--Linear Textos-->
+            <!-- TEXTOS -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <!--NOMBRE-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
                     <TextView
-                        android:id="@+id/nombre"
+                        android:id="@+id/nombrePedidoRepartidor"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Nombre cliente "
-                        android:textSize="30dp"
-                        android:textStyle="bold">
-                    </TextView>
-                </LinearLayout>
-
-                <!--DIRECCIÓN-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                    <TextView
-                        android:id="@+id/encargo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="encargo (cosas del pedido supongo)"
-                        android:textSize="30dp"
+                        android:text="nombre"
+                        android:textSize="20sp"
                         android:textStyle="bold">
                     </TextView>
                 </LinearLayout>
@@ -55,30 +37,53 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-
                     <TextView
-                        android:id="@+id/direccion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="direccion"
-                        android:textSize="30dp"
+                        android:id="@+id/direccionPedidoRepartidor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Direccion"
+                        android:textSize="20sp"
                         android:textStyle="bold">
-
                     </TextView>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/estadoPedidoRepartidor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Estado"
+                        android:textSize="20sp"
+                        android:textStyle="bold">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/productosPedidoRepartidor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="productos"
+                        android:textSize="20sp"
+                        android:textStyle="bold">
+                    </TextView>
                 </LinearLayout>
 
             </LinearLayout>
-
-
-            <!--Linear Botones-->
+            <!-- BOTONES -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:orientation="vertical">
 
-                <!--botón llamar-->
+                <!-- BOTÓN Aceptar -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -86,17 +91,19 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <ImageButton
-                            android:id="@+id/llamar"
+                            android:id="@+id/AprobarPedidoRepartidor"
                             android:layout_width="80dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/apruebo"
-                            android:layout_centerInParent="true">
+                            android:layout_centerInParent="true"
+                            android:contentDescription="Aceptar Envio"
+                            android:src="@drawable/apruebo">
+
                         </ImageButton>
                     </RelativeLayout>
                 </LinearLayout>
-
-                <!--botón ir-->
+                <!-- BOTÓN Cancelar -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -105,20 +112,33 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <ImageButton
-                            android:id="@+id/ir"
+                            android:id="@+id/CancelarPedidoRepartidor"
                             android:layout_width="80dp"
                             android:layout_height="50dp"
+                            android:layout_centerInParent="true"
                             android:src="@drawable/rechazo"
-                            android:layout_centerInParent="true">
+                            android:contentDescription="Rechazar envio">
                         </ImageButton>
                     </RelativeLayout>
                 </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageButton
+                            android:id="@+id/VerMapaRepartidor"
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/mapa"
+                            android:contentDescription="Ver mapa de repartidor">
+                        </ImageButton>
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
-
-
         </LinearLayout>
-
     </RelativeLayout>
-
 </RelativeLayout>
