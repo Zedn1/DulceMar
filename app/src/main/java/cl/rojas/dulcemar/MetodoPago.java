@@ -52,7 +52,7 @@ public class MetodoPago extends AppCompatActivity {
         }
 
         // Configurar el botón de confirmar pago
-        confirmarPago.setOnClickListener(new View.OnClickListener() {
+        confirmarPago.setOnClickListener(new View.OnClickListener()     {
             @Override
             public void onClick(View v) {
                 confirmarPago();
@@ -92,6 +92,10 @@ public class MetodoPago extends AppCompatActivity {
                 .add(datosPago)
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(MetodoPago.this, "Pago confirmado", Toast.LENGTH_SHORT).show();
+
+                    // Vaciar el carrito después de confirmar el pago
+                    CarritoClase.getInstancia().vaciarCarrito();
+
                     // Ir a la actividad de factura
                     Intent intent = new Intent(MetodoPago.this, factura.class);
                     intent.putExtra("nombre", nombre);

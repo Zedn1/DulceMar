@@ -56,6 +56,10 @@ public class CarritoClase implements Serializable {
         productos.removeIf(pc -> pc.getProducto().getNombre().equals(producto.getNombre()));
     }
 
+    public void vaciarCarrito() {
+        productos.clear(); // Limpia la lista de productos
+    }
+
 
 
 
