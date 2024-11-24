@@ -27,8 +27,8 @@
                         android:id="@+id/nombrePedidoRepartidor"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="nombre"
-                        android:textSize="20sp"
+                        android:text="Nombre"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/black">
                     </TextView>
@@ -43,7 +43,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Direccion"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/black">
                     </TextView>
@@ -58,7 +58,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Estado"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/black">
                     </TextView>
@@ -72,8 +72,8 @@
                         android:id="@+id/productosPedidoRepartidor"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="productos"
-                        android:textSize="20sp"
+                        android:text="Productos"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="@color/black">
                     </TextView>
@@ -98,7 +98,7 @@
 
                         <ImageButton
                             android:id="@+id/AprobarPedidoRepartidor"
-                            android:layout_width="80dp"
+                            android:layout_width="70dp"
                             android:layout_height="50dp"
                             android:layout_centerInParent="true"
                             android:contentDescription="Aceptar Envio"
@@ -117,7 +117,7 @@
                         android:layout_height="match_parent">
                         <ImageButton
                             android:id="@+id/CancelarPedidoRepartidor"
-                            android:layout_width="80dp"
+                            android:layout_width="70dp"
                             android:layout_height="50dp"
                             android:layout_centerInParent="true"
                             android:src="@drawable/rechazo"
@@ -134,7 +134,7 @@
                         android:layout_height="match_parent">
                         <ImageButton
                             android:id="@+id/VerMapaRepartidor"
-                            android:layout_width="80dp"
+                            android:layout_width="70dp"
                             android:layout_height="50dp"
                             android:layout_centerInParent="true"
                             android:src="@drawable/mapa"
