@@ -106,7 +106,7 @@
                     android:layout_width="170dp"
                     android:layout_height="170dp"
                     android:text="Domicilio"
-                    android:textSize="28dp"
+                    android:textSize="22dp"
                     android:textColor="@color/black"
                     android:layout_centerInParent="true"
                     android:backgroundTint="@color/gris_claro">
@@ -130,7 +130,7 @@
                     android:layout_width="170dp"
                     android:layout_height="170dp"
                     android:text="Retiro en local"
-                    android:textSize="28dp"
+                    android:textSize="22dp"
                     android:textColor="@color/black"
                     android:layout_centerInParent="true"
                     android:backgroundTint="@color/gris_claro">
