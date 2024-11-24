@@ -46,7 +46,8 @@ public class carrito extends AppCompatActivity {
 
     private void actualizarTotal() {
         TextView tvTotal = findViewById(R.id.tvTotal);
-        tvTotal.setText("Precio Total: $" + String.format("%.2f", carritoClase.calcularTotal()));
+        int totalEnCentavos = carritoClase.calcularTotal(); // Total en centavos
+        tvTotal.setText(String.format("Precio Total: %d CLP", totalEnCentavos)); // Muestra el total en centavos
     }
 
     private void mostrarProductosEnCarrito() {

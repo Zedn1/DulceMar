@@ -63,27 +63,25 @@ public class pedidosCliente extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
+                            String id = document.getId(); // Obtén el ID del documento
                             String nombre = document.getString("nombre");
                             String direccion = document.getString("direccion");
                             String estado = document.getString("estado");
 
-                            // Cambia esto para manejar una lista de productos
                             List<Map<String, Object>> productosList = (List<Map<String, Object>>) document.get("pedidos");
                             Map<String, Integer> productos = new HashMap<>();
 
-                            // Convertir la lista a un mapa
                             if (productosList != null) {
                                 for (Map<String, Object> producto : productosList) {
-                                    Integer cantidad = ((Long) producto.get("cantidad")).intValue(); // Asegúrate de que la cantidad sea un Long en Firestore
+                                    Integer cantidad = ((Long) producto.get("cantidad")).intValue();
                                     Map<String, Object> productoData = (Map<String, Object>) producto.get("producto");
                                     String nombreProducto = (String) productoData.get("nombre");
-
-                                    // Agregar el producto y su cantidad al mapa
                                     productos.put(nombreProducto, cantidad);
                                 }
                             }
 
-                            Pedido pedido = new Pedido(nombre, direccion, estado, productos);
+                            // Crea el pedido con el ID
+                            Pedido pedido = new Pedido(id, nombre, direccion, estado, productos);
                             listaPedidos.add(pedido);
                         }
                         mostrarPedidos();

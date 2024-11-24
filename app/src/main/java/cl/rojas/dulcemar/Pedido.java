@@ -3,6 +3,7 @@ package cl.rojas.dulcemar;
 import java.util.Map;
 
 public class Pedido {
+    private String id;
     private String nombre;
     private String direccion;
     private String estado;
@@ -11,14 +12,18 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(String nombre, String direccion, String estado, Map<String, Integer> productos) {
+    public Pedido(String id, String nombre, String direccion, String estado, Map<String, Integer> productos) {
+        this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.estado = estado;
         this.productos = productos;
     }
 
-    // Getters
+    public String getId() {
+        return id;
+    }
+
     public String getNombre() {
         return nombre;
     }

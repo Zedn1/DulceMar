@@ -64,12 +64,12 @@ public class CarritoClase implements Serializable {
 
 
 
-    public double calcularTotal() {
-        double total = 0;
+    public int calcularTotal() {
+        int total = 0; // Cambiado a int
         for (ProductoCarrito pc : productos) {
-            total += pc.getProducto().getPrecio() * pc.getCantidad();
+            total += pc.getProducto().getPrecio() * pc.getCantidad(); // Multiplica por la cantidad
         }
-        return total;
+        return total; // Devuelve el total como int
     }
 
     public List<ProductoCarrito> getProductos() {

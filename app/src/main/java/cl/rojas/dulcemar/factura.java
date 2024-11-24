@@ -26,7 +26,7 @@ public class factura extends AppCompatActivity {
         setContentView(R.layout.activity_factura);
 
         db = FirebaseFirestore.getInstance();
-        Button btnPedidos = (Button) findViewById(R.id.pedidos);
+        Button btnPedidos = findViewById(R.id.pedidos);
 
         // Inicializar TextViews
         facturaID = findViewById(R.id.FacturaID);
@@ -38,36 +38,31 @@ public class factura extends AppCompatActivity {
 
         // Obtener los datos del Intent
         String nombre = getIntent().getStringExtra("nombre");
-        double precioTotal = getIntent().getDoubleExtra("precioTotal", 0.0);
+        int precioTotal = getIntent().getIntExtra("precioTotal", 0); // Cambiado a int
         String direccion = getIntent().getStringExtra("direccion");
 
         // Calcular IVA y precio sin IVA
-        double precioSinIVA = precioTotal / 1.19; // Precio sin IVA
-        double iva = precioTotal - precioSinIVA; // IVA
+        int precioSinIVA = precioTotal * 100 / 119; // Precio sin IVA en centavos
+        int iva = precioTotal - precioSinIVA; // IVA en centavos
 
         // Generar ID única para la factura
         String idFactura = UUID.randomUUID().toString();
 
-        btnPedidos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(factura.this, pedidosCliente.class));
-            }
-        });
+        btnPedidos.setOnClickListener(view -> startActivity(new Intent(factura.this, pedidosCliente.class)));
 
         // Mostrar datos en la UI
         facturaID.setText(idFactura);
         facturaNombre.setText(nombre);
-        facturaPrecioSinIVA.setText(String.format("Precio sin IVA: $%.2f", precioSinIVA));
-        facturaIVA.setText(String.format("IVA: $%.2f", iva));
-        facturaPrecioTotal.setText(String.format("Precio Total: $%.2f", precioTotal));
+        facturaPrecioSinIVA.setText(String.format("Precio sin IVA: %d CLP", precioSinIVA)); // Muestra el precio sin IVA
+        facturaIVA.setText(String.format("IVA: %d CLP", iva)); // Muestra el IVA
+        facturaPrecioTotal.setText(String.format("Precio Total: %d CLP", precioTotal)); // Muestra el precio total
         facturaDireccion.setText(direccion);
 
         // Guardar la factura en Firestore
         guardarFactura(idFactura, nombre, precioSinIVA, iva, precioTotal, direccion);
     }
 
-    private void guardarFactura(String idFactura, String nombre, double precioSinIVA, double iva, double precioTotal, String direccion) {
+    private void guardarFactura(String idFactura, String nombre, int precioSinIVA, int iva, int precioTotal, String direccion) {
         // Crear un mapa para los datos de la factura
         Map<String, Object> datosFactura = new HashMap<>();
         datosFactura.put("DireccionAEnviar", direccion);

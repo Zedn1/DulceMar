@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,12 +42,15 @@ public class MenuPrincipalRepartidor extends AppCompatActivity {
     }
 
     private void cargarPedidosListos() {
+        // Crear una consulta con múltiples estados
         db.collection("pedido")
-                .whereEqualTo("estado", "Pedido Listo") .get()
+                .whereIn("estado", Arrays.asList("Pedido Listo", "Envio Aceptado"))
+                .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        listaPedidos.clear(); // Limpiar la lista antes de agregar nuevos pedidos
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            String id = document.getId(); // Obtén el ID del documento
+                            String id = document.getId();
                             String nombre = document.getString("nombre");
                             String direccion = document.getString("direccion");
                             String estado = document.getString("estado");

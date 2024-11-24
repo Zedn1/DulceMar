@@ -129,7 +129,7 @@ public class RegistroUsuario extends AppCompatActivity {
                         map.put("password", claveEncriptada);
                         map.put("userType", userType);
 
-                        // Actualizar el perfil del usuario
+                        // Actualizar el perfil del usuario dandole el nombre en la autentificacion del usuario
                         FirebaseUser user = mAuth.getCurrentUser ();
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(nombreCapturadoRegistro) // Establece el nombre de visualización
@@ -159,7 +159,7 @@ public class RegistroUsuario extends AppCompatActivity {
                             }
                         });
                     } else {
-                        Toast.makeText(RegistroUsuario.this, "Error al registrar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistroUsuario.this, "Usuario no guardado", Toast.LENGTH_SHORT).show();
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
