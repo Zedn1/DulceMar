@@ -27,8 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    FirebaseFirestore mFireStore = FirebaseFirestore.getInstance();
-
+    private FirebaseFirestore mFireStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Button botonVolverInicio = (Button) findViewById(R.id.botonIrRegistrarse);
 
         mAuth = FirebaseAuth.getInstance();
+        mFireStore = FirebaseFirestore.getInstance();
 
 
         botonIniciarSesion.setOnClickListener(new View.OnClickListener() {

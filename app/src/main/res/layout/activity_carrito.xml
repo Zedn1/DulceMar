@@ -111,7 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Precio Total: $0.00"
-                    android:textSize="30sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:layout_centerInParent="true">
                 </TextView>
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pagar"
-                    android:textSize="35sp"
+                    android:textSize="25sp"
                     android:layout_centerInParent="true"
                     android:backgroundTint="@color/gris_oscuro">
                 </Button>
