@@ -15,17 +15,7 @@
         android:layout_weight="4.2"
         android:background="@color/gris_claro">
         <!--Linear 1.1-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.2">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </RelativeLayout>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,7 +28,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Seguimiento"
-                    android:textSize="25sp"
+                    android:textSize="35sp"
                     android:layout_centerInParent="true"
                     android:textColor="@color/black"
                     android:textStyle="bold">
@@ -46,25 +36,7 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <!--Linear 1.2-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.2">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageButton
-                    android:id="@+id/BotonCuenta"
-                    android:layout_width="90dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/account_image"
-                    android:layout_alignParentRight="true"
-                    android:background="@color/gris_claro">
-                </ImageButton>
-            </RelativeLayout>
-        </LinearLayout>
 
     </LinearLayout>
 

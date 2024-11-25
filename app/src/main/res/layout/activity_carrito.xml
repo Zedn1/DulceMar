@@ -14,28 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="4"
+        android:layout_weight="4.5"
         android:background="@color/gris_claro">
 
         <!--Linear 1.1-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageButton
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/menu_opciones"
-                    android:contentDescription="menú de opciones"
-                    android:scaleType="fitXY">
 
-                </ImageButton>
-            </RelativeLayout>
-
-        </LinearLayout>
 
         <!--Linear 1.2-->
         <LinearLayout
@@ -91,7 +74,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.7"
+        android:layout_weight="1.6"
         android:background="@drawable/grayblur">
         <RelativeLayout
             android:layout_width="match_parent"

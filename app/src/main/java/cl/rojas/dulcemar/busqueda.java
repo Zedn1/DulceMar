@@ -2,7 +2,12 @@ package cl.rojas.dulcemar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,11 +45,23 @@ public class busqueda extends AppCompatActivity {
         cargarProductos();
 
         Button btnIrCarrito = findViewById(R.id.btnIrCarrito);
+        ImageButton btnOpcionesBusqueda = findViewById(R.id.BotonOpcionesBusqueda);
+
+
+
+
+
         btnIrCarrito.setOnClickListener(v -> {
             Intent intent = new Intent(this, carrito.class);
             intent.putExtra("carrito", carrito); // Pasa el carrito actual
             startActivityForResult(intent, REQUEST_CODE_CARRITO); // Usa la constante aquí
         });
+
+
+        btnOpcionesBusqueda.setOnClickListener(view -> {
+            mostrarMenuOpciones(view);
+        });
+
     }
 
     @Override
@@ -65,5 +82,29 @@ public class busqueda extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private void mostrarMenuOpciones(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.menu_opciones, popupMenu.getMenu());
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.opcionPedidos) {
+                    irAPedidos();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+        popupMenu.show();
+    }
+
+
+    private void irAPedidos() {
+        startActivity(new Intent(busqueda.this, pedidosCliente.class));
     }
 }

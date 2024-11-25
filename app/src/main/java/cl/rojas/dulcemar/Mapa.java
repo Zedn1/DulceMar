@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -219,6 +221,11 @@ public class Mapa extends AppCompatActivity {
                         if (documentSnapshot.exists()) {
                             double lat = documentSnapshot.getDouble("latitud");
                             double lon = documentSnapshot.getDouble("longitud");
+                            String direccion = documentSnapshot.getString("direccion"); // Obtener la dirección
+                            String nombreCliente = documentSnapshot.getString("nombre"); // Obtener el nombre del cliente
+                            String nombreRepartidor = documentSnapshot.getString("repartidorNombre"); // Obtener el nombre del repartidor
+                            String estado = documentSnapshot.getString("estado"); // Obtener el estado del pedido
+
                             // Marca la ubicación del pedido en el mapa
                             markerPedido = new Marker(mapView);
                             markerPedido.setPosition(new GeoPoint(lat, lon));
@@ -229,6 +236,8 @@ public class Mapa extends AppCompatActivity {
                             // Centrar el mapa en la ubicación del pedido
                             mapView.getController().setCenter(new GeoPoint(lat, lon));
 
+                            // Actualizar los TextView
+                            actualizarInformacionEntrega(nombreCliente, direccion, nombreRepartidor, estado);
                         } else {
                             Log.e("Firestore", "El documento no existe");
                             runOnUiThread(() -> Toast.makeText(Mapa.this, "No se encontraron coordenadas en Firestore", Toast.LENGTH_SHORT).show());
@@ -239,6 +248,31 @@ public class Mapa extends AppCompatActivity {
                     Log.e("Firestore", "Error al obtener coordenadas", e);
                     runOnUiThread(() -> Toast.makeText(Mapa.this, "Error al obtener coordenadas de Firestore", Toast.LENGTH_SHORT).show());
                 });
+    }
+
+    private void actualizarInformacionEntrega(String nombreCliente, String direccion, String nombreRepartidor, String estado) {
+        // Obtener los TextViews
+        TextView mapaNombre = findViewById(R.id.MapaNombre);
+        TextView mapaDireccion = findViewById(R.id.MapaDireccion);
+
+        // Verificar el tipo de usuario y actualizar los TextViews
+        if ("Repartidor".equals(userType)) {
+            // El repartidor siempre ve el nombre del cliente
+            mapaNombre.setText(nombreCliente); // Nombre del cliente para el repartidor
+        } else {
+            // Para el cliente, verificar el estado del pedido
+            if ("Envio Aceptado".equals(estado)) {
+                // Si el pedido está aceptado, mostrar el nombre del repartidor
+                if (nombreRepartidor != null && !nombreRepartidor.isEmpty()) {
+                    mapaNombre.setText(nombreRepartidor); // Nombre del repartidor para el cliente
+                } else {
+                    mapaNombre.setText("Ningún repartidor ha aceptado el pedido"); // Mensaje si no hay repartidor
+                }
+            } else {
+                mapaNombre.setText("El pedido aún no ha sido aceptado"); // Mensaje si el pedido no está aceptado
+            }
+        }
+        mapaDireccion.setText(direccion); // Dirección del pedido
     }
 
     @Override

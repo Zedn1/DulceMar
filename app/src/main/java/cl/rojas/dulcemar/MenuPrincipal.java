@@ -90,10 +90,7 @@ public class MenuPrincipal extends AppCompatActivity {
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.opcionFacturas) {
-                    // Lógica para la opción de Facturas
-                    return true;
-                } else if (menuItem.getItemId() == R.id.opcionPedidos) {
+                if (menuItem.getItemId() == R.id.opcionPedidos) {
                     irAPedidos();
                     return true;
                 } else {

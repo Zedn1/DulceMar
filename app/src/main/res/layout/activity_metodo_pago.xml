@@ -14,26 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="4"
+        android:layout_weight="5"
         android:background="@color/gris_claro">
 
-        <!--Linear 1.1-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageButton
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/menu_opciones"
-                    android:contentDescription="menú de opciones"
-                    android:scaleType="fitXY">
-                </ImageButton>
-            </RelativeLayout>
-        </LinearLayout>
 
             <!--Linear 1.2-->
         <LinearLayout
@@ -54,7 +37,6 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:src="@drawable/billetera"
-                        android:layout_alignParentRight="true"
                         android:layout_centerInParent="true">
                     </ImageView>
                 </RelativeLayout>
@@ -75,7 +57,9 @@
                         android:textSize="30sp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:layout_centerInParent="true">
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="20dp">
                     </TextView>
                 </RelativeLayout>
             </LinearLayout>
@@ -87,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="2"
+        android:layout_weight="1.7"
         android:background="@drawable/grayblur">
         <!--Linear 3.1-->
         <LinearLayout
@@ -187,7 +171,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4.5"
+        android:layout_weight="5"
         android:background="@color/gris_claro2">
         <RelativeLayout
             android:layout_width="match_parent"

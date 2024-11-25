@@ -1,5 +1,6 @@
 package cl.rojas.dulcemar;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -9,11 +10,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import android.os.Bundle;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -27,6 +34,7 @@ public class MenuPrincipalRepartidor extends AppCompatActivity {
 
     private ListView listaPedidosRepartidor;
     private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
     private List<PedidoRepartidor> listaPedidos;
 
     @Override
@@ -36,7 +44,16 @@ public class MenuPrincipalRepartidor extends AppCompatActivity {
 
         listaPedidosRepartidor = findViewById(R.id.listaPedidosRepartidor);
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         listaPedidos = new ArrayList<>();
+        ImageButton btnOpcionesRepartidor = findViewById(R.id.menuOpcionesRepartidor);
+
+
+        btnOpcionesRepartidor.setOnClickListener(view -> {
+            mostrarMenuOpciones(view);
+        });
+
+
 
         cargarPedidosListos();
     }
@@ -82,4 +99,31 @@ public class MenuPrincipalRepartidor extends AppCompatActivity {
         PedidoRepartidorAdapter adapter = new PedidoRepartidorAdapter(this, listaPedidos);
         listaPedidosRepartidor.setAdapter(adapter);
     }
+
+    private void mostrarMenuOpciones(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.menu_opciones_repartidor, popupMenu.getMenu());
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.CerrarSesionRepartidor) {
+                    cerrarSesion();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+        popupMenu.show();
+    }
+
+
+    private void cerrarSesion(){
+        mAuth.signOut();
+        finish();
+        startActivity(new Intent(MenuPrincipalRepartidor.this, MainActivity.class));
+    }
+
 }

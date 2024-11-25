@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="3.9"
+        android:layout_weight="5"
         android:background="@color/gris_claro">
 
         <!--Linear 1.1-->
@@ -22,22 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="4">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/menu_opciones"
-                        android:contentDescription="menú de opciones"
-                        android:scaleType="fitXY">
-                    </ImageButton>
-                </RelativeLayout>
-            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -80,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="1.7"
         android:background="@drawable/grayblur">
         <!--Linear 3.1-->
         <LinearLayout
@@ -186,7 +171,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3.9"
+        android:layout_weight="5"
         android:background="@color/gris_claro2">
         <RelativeLayout
             android:layout_width="match_parent"
