@@ -2,6 +2,7 @@ package cl.rojas.dulcemar;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -25,11 +30,18 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentReference;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
+import org.osmdroid.views.overlay.Polyline;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Mapa extends AppCompatActivity {
 
@@ -45,6 +57,7 @@ public class Mapa extends AppCompatActivity {
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
     private String userType; // Tipo de usuario (repartidor o cliente)
+    private Polyline currentPolyline; // Variable para almacenar la polilínea actual
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +109,13 @@ public class Mapa extends AppCompatActivity {
 
                         // Guardar la ubicación en Firestore
                         guardarUbicacionEnFirestore(locationRepartidor);
+
+                        // Obtener la ubicación del pedido y dibujar la ruta
+                        if (markerPedido != null) {
+                            GeoPoint origen = new GeoPoint(locationRepartidor.getLatitude(), locationRepartidor.getLongitude());
+                            GeoPoint destino = markerPedido.getPosition();
+                            obtenerRuta(origen, destino); // Llama al método para obtener la ruta
+                        }
                     }
                 }
             }
@@ -186,6 +206,82 @@ public class Mapa extends AppCompatActivity {
         }
     }
 
+    private List<GeoPoint> decodePoly(String encoded) {
+        List<GeoPoint> poly = new ArrayList<>();
+        int index = 0, len = encoded.length();
+        int lat = 0, lng = 0;
+
+        while (index < len) {
+            int b, shift = 0, result = 0;
+            do {
+                b = encoded.charAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            int dlat = ((result >> 1) ^ -(result & 1));
+            lat += dlat;
+
+            shift = 0;
+            result = 0;
+            do {
+                b = encoded.charAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            int dlng = ((result >> 1) ^ -(result & 1));
+            lng += dlng;
+
+            GeoPoint p = new GeoPoint((double) (lat / 1E5), (double) (lng / 1E5));
+            poly.add(p);
+        }
+        return poly;
+    }
+
+    private void obtenerRuta(GeoPoint origen, GeoPoint destino) {
+        String url = "http://router.project-osrm.org/route/v1/driving/" +
+                origen.getLongitude() + "," + origen.getLatitude() + ";" +
+                destino.getLongitude() + "," + destino.getLatitude() +
+                "?overview=full";
+
+        Log.d("OSRM URL", url); // Imprime la URL
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                response -> {
+                    Log.d("OSRM Response", response); // Imprime la respuesta completa
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        JSONArray routes = jsonResponse.getJSONArray("routes");
+                        if (routes.length() > 0) {
+                            JSONObject route = routes.getJSONObject(0);
+                            String geometry = route.getString("geometry"); // Obtén la geometría como String
+
+                            // Decodifica la polilínea
+                            List<GeoPoint> routePoints = decodePoly(geometry);
+
+                            // Elimina la polilínea anterior si existe
+                            if (currentPolyline != null) {
+                                mapView.getOverlays().remove(currentPolyline);
+                            }
+
+                            // Dibuja la nueva línea de la ruta
+                            currentPolyline = new Polyline();
+                            currentPolyline.setPoints(routePoints);
+                            currentPolyline.setColor(Color.RED);
+                            currentPolyline.setWidth(10.0f);
+                            mapView.getOverlays().add(currentPolyline);
+                            mapView.invalidate();
+                        }
+                    } catch (JSONException e) {
+                        Log.e("OSRM", "Error al analizar la respuesta JSON", e);
+                    }
+                },
+                error -> Log.e("OSRM", "Error en la solicitud de ruta", error)
+        );
+
+        queue.add(stringRequest);
+    }
+
     private void mostrarUbicacionRepartidor(String repartidorId) {
         // Obtener la ubicación del repartidor desde Firestore usando el ID del repartidor
         db.collection("repartidores").document(repartidorId)
@@ -207,6 +303,13 @@ public class Mapa extends AppCompatActivity {
                             }
                             markerRepartidor.setPosition(new GeoPoint(lat, lon));
                             mapView.invalidate();
+
+                            // Obtener la ubicación del pedido y dibujar la ruta
+                            if (markerPedido != null) {
+                                GeoPoint origen = new GeoPoint(lat, lon);
+                                GeoPoint destino = markerPedido.getPosition();
+                                obtenerRuta(origen, destino); // Llama al método para obtener la ruta
+                            }
                         });
                     }
                 });
